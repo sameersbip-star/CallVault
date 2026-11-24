@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2026_11_23_065557) do
+ActiveRecord::Schema[7.1].define(version: 2026_11_23_141424) do
   # These extensions should be enabled to support this database
   enable_extension "pg_stat_statements"
   enable_extension "pg_trgm"
@@ -826,6 +826,14 @@ ActiveRecord::Schema[7.1].define(version: 2026_11_23_065557) do
     t.index ["name", "account_id"], name: "index_companies_on_name_and_account_id"
   end
 
+  create_table "contact_identity_signing_keys", force: :cascade do |t|
+    t.bigint "inbox_id", null: false
+    t.string "secret", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["inbox_id"], name: "index_contact_identity_signing_keys_on_inbox_id"
+  end
+
   create_table "contact_inboxes", force: :cascade do |t|
     t.bigint "contact_id"
     t.bigint "inbox_id"
@@ -860,6 +868,7 @@ ActiveRecord::Schema[7.1].define(version: 2026_11_23_065557) do
     t.string "country_code", default: ""
     t.boolean "blocked", default: false, null: false
     t.bigint "company_id"
+    t.jsonb "verified_attributes", default: {}, null: false
     t.index "lower((email)::text), account_id", name: "index_contacts_on_lower_email_account_id"
     t.index ["account_id", "contact_type"], name: "index_contacts_on_account_id_and_contact_type"
     t.index ["account_id", "email", "phone_number", "identifier"], name: "index_contacts_on_nonempty_fields", where: "(((email)::text <> ''::text) OR ((phone_number)::text <> ''::text) OR ((identifier)::text <> ''::text))"
