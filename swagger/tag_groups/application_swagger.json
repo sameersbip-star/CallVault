@@ -9845,6 +9845,13 @@
                   "type": "string",
                   "description": "The availability status of the contact"
                 },
+                "country_code": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "description": "The normalized ISO country code of the contact"
+                },
                 "email": {
                   "type": "string",
                   "description": "The email address of the contact"
@@ -12273,6 +12280,11 @@
             "description": "phone number of the contact",
             "example": "+123456789"
           },
+          "country_code": {
+            "type": "string",
+            "description": "Country code of the contact. Use an empty string to clear it.",
+            "example": "US"
+          },
           "avatar": {
             "type": "string",
             "format": "binary",
@@ -12325,6 +12337,11 @@
             "type": "string",
             "description": "phone number of the contact",
             "example": "+123456789"
+          },
+          "country_code": {
+            "type": "string",
+            "description": "Country code of the contact. Use an empty string to clear it.",
+            "example": "US"
           },
           "avatar": {
             "type": "string",
@@ -15203,6 +15220,13 @@
       "contact_detail": {
         "type": "object",
         "properties": {
+          "country_code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Normalized country code of the contact"
+          },
           "additional_attributes": {
             "type": "object",
             "description": "The object containing additional attributes related to the contact",
@@ -15212,7 +15236,10 @@
                 "description": "City of the contact"
               },
               "country": {
-                "type": "string",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "description": "Country of the contact"
               },
               "country_code": {
@@ -15587,6 +15614,13 @@
       "contact_list_item": {
         "type": "object",
         "properties": {
+          "country_code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Normalized country code of the contact"
+          },
           "additional_attributes": {
             "type": "object",
             "description": "The object containing additional attributes related to the contact",
@@ -15596,7 +15630,10 @@
                 "description": "City of the contact"
               },
               "country": {
-                "type": "string",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "description": "Country of the contact"
               },
               "country_code": {
